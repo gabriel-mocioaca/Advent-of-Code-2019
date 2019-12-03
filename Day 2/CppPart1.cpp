@@ -14,7 +14,7 @@ using namespace std;
 
 typedef long long ll;
 
-ifstream in("input.txt");
+ifstream in("CppIn.txt");
 
 int main() {
 	vector<int> v;
