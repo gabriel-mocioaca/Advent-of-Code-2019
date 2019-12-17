@@ -14,7 +14,7 @@ using namespace std;
 
 typedef long long ll;
 
-ifstream in("input2.txt");
+ifstream in("input1.txt");
 ofstream out("out.txt");
 
 bool finished = false;
@@ -86,7 +86,6 @@ bool run(vector<ll>& w, int& pc, queue<ll>& input, deque<ll>& output) {
 			w[par1] = input.front();
 			input.pop();
 
-			//cout << w[par1] << '\n';
 			pc += 2;
 			continue;
 		}
@@ -143,7 +142,7 @@ bool run(vector<ll>& w, int& pc, queue<ll>& input, deque<ll>& output) {
 }
 
 int main() {
-	vector<ll> v;
+	/*vector<ll> v;
 	ll x;
 	int pc = 0;
 	queue<ll> input;
@@ -152,35 +151,35 @@ int main() {
 		v.push_back(x);
 	}
 
+
+	input.push(0);
+
 	for (int i = 0; i <= 10000; ++i)
 		v.push_back(0);
 
-	// by hand 
-	string m = "A,B,A,C,A,B,C,A,B,C\n";
-	string m1 = "R,8,R,10,R,10\n";
-	string m2 = "R,4,R,8,R,10,R,12\n";
-	string m3 = "R,12,R,4,L,12,L,12\n";
-
-	for (int i = 0; i < m.size(); ++i) {
-		input.push(ll(m[i]));
-	}
-	for (int i = 0; i < m1.size(); ++i) {
-		input.push(ll(m1[i]));
-	}
-	for (int i = 0; i < m2.size(); ++i) {
-		input.push(ll(m2[i]));
-	}
-	for (int i = 0; i < m3.size(); ++i) {
-		input.push(ll(m3[i]));
-	}
-
-	input.push(ll('n'));
-	input.push(ll('\n'));
-
-	v[0] = 2;
+	string s;
 
 	run(v, pc, input, output);
 
+	while (!output.empty()) {
+		char c = char(output.front());
+		output.pop_front();
+		s.push_back(c);
+	}
+	cout << s;*/
+	vector<string> m;
+	string s;
+	while (in >> s)
+		m.push_back(s);
+	int sum = 0;
 
-	cout << output.back();
+
+	for (int i = 1; i < m.size() - 1; ++i) {
+		for (int j = 1; j < m[0].size() - 1; ++j) {
+			if (m[i][j] == '#' && m[i - 1][j] == '#' && m[i + 1][j] == '#' && m[i][j - 1] == '#' && m[i][j + 1] == '#') {
+				sum += i * j;
+			}
+		}
+	}
+	cout << sum;
 }
